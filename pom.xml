@@ -84,6 +84,27 @@
                 <artifactId>slf4j-api</artifactId>
                 <version>1.6.1</version>
             </dependency>
+
+            <!-- zk -->
+            <dependency>
+                <groupId>com.101tec</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>0.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>3.4.6</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.35</version>
+                <scope>compile</scope>
+            </dependency>
+
         </dependencies>
 
 </project>
