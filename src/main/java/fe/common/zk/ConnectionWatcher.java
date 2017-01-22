@@ -28,7 +28,7 @@ public class ConnectionWatcher implements Watcher {
      */
     private static final int CONNECT_TIMEOUT = 3;
 
-    private static transient String zkHost;
+    private static volatile String zkHost;
 
     private boolean debug = false;
 
@@ -45,7 +45,7 @@ public class ConnectionWatcher implements Watcher {
         this.debug = debug;
     }
 
-    private void connect(String host) throws IOException,InterruptedException{
+    protected void connect(String host) throws IOException,InterruptedException{
         zkHost = host;
         zk = new ZooKeeper(zkHost,SESSION_TIMEOUT,this);
         countDownLatch.await(CONNECT_TIMEOUT,TimeUnit.SECONDS);
