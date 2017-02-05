@@ -5,4 +5,10 @@ package fe.common.alarm;
  */
 public interface Alarm {
 
+    /**
+     * 报警定义
+     * @param content 报警内容
+     * @param receiver 接收人
+     */
+    public void alarm(String content,String... receiver);
 }
