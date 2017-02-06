@@ -148,10 +148,9 @@ public class ReadWriteStore extends ConnectionWatcher {
 
     /**
      * 获取根节点下所有子节点
-     * @param path
      * @return
      */
-    public List<String> getRootChildren(String path) {
+    public List<String> getRootChildren() {
         return getChildren("/");
     }
 
@@ -200,21 +199,7 @@ public class ReadWriteStore extends ConnectionWatcher {
         return  num;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public void release() throws InterruptedException {
+        zk.close();
+    }
 }
