@@ -1,8 +1,12 @@
 package fe.common.alarm;
 
 
+import fe.common.Assert;
 import fe.common.FastJson;
+import fe.common.FeCommonConfig;
 import fe.common.http.HttpClientUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,20 +15,19 @@ import java.util.Map;
  * Created by fe on 2017/2/5.
  */
 public class BearyChartAlarm implements Alarm {
+
+    public static final Logger logger = LoggerFactory.getLogger(BearyChartAlarm.class);
+
     @Override
     public void alarm(String content, String... receiver) {
-        String uri = "https://hook.bearychat.com/=bw9AN/incoming/93e48775ba7021c70e5207955a18c211";
+        Assert.assertNotNull(content);
         Map<String,Object> paramMap = new HashMap<String,Object>();
         paramMap.put("text",content);
         try {
-            HttpClientUtils.postParameters(uri, FastJson.toJson(paramMap),"application/json");
+            HttpClientUtils.postParameters(FeCommonConfig.BEARY_CHAT_WEB_HOOK_URL, FastJson.toJson(paramMap),"application/json");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("alarm error , e : {}",e);
+            throw new RuntimeException("alarm error!",e);
         }
-    }
-
-    public static void main(String[] args) {
-        BearyChartAlarm bearyChartAlarm = new BearyChartAlarm();
-        bearyChartAlarm.alarm("测试测试123","","");
     }
 }
