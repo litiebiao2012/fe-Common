@@ -190,7 +190,7 @@ public class ReadWriteStore extends ConnectionWatcher {
     private int retryPolicy(int retryNum,KeeperException e) throws InterruptedException,KeeperException {
         //TODO 超过最大重试次数
         int num = retryNum++;
-        if (retryNum++ >= MAX_RETRY_NUM)
+        if (num >= MAX_RETRY_NUM)
             throw  e;
 
         //TODO 根据重试次数递增

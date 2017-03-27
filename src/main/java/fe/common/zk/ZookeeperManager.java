@@ -44,4 +44,10 @@ public class ZookeeperManager {
         private static ZookeeperManager zookeeperManager = new ZookeeperManager();
     }
 
+    public void reconnect() {
+        readWriteStore.reconnect();
+    }
+
+
+
 }
